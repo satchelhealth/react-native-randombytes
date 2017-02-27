@@ -26,7 +26,7 @@ function addEntropy (entropyBuf) {
   sjcl.random.addEntropy(stanfordSeed)
 }
 
-export function seedSJCL (cb) {
+function seedSJCL (cb) {
   cb = cb || noop
   randomBytes(4096, function (err, buffer) {
     if (err) return cb(err)
@@ -35,7 +35,7 @@ export function seedSJCL (cb) {
   })
 }
 
-export function randomBytes (length, cb) {
+module.exports = function(length, cb) {
   if (!cb) {
     let size = length
     let wordCount = Math.ceil(size * 0.25)
